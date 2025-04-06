@@ -1,5 +1,13 @@
 * {
 	text-align: center;
+	box-sizing: border-box;
+}
+
+.container {
+	display: grid;
+	min-height: 100dvh;
+	grid-template-rows:
+		auto 1fr auto;
 }
 
 img {
@@ -19,4 +27,15 @@ img {
 
 .noSeleccionado {
 	opacity: 0.5;
+}
+
+footer{
+	background-color: #333;
+	color: white;
+	padding: 10px 0;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em;
 }

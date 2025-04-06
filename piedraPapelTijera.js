@@ -1,6 +1,4 @@
-// Este array no se puede modificar,
 var posibilidades = ["piedra", "papel", "tijera"];
-//    //
 var playerName = document.getElementsByName("nombre")[0]; // Obtener el input de nombre del jugador
 var match = document.getElementsByName("partidas")[0]; // Obtener el input de número de partidas
 var playerButton = document.getElementsByTagName("button")[0]; // Obtener el botón de jugar
