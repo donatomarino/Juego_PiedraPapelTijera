@@ -16,13 +16,16 @@ computerButton.setAttribute("disabled", "true"); // Deshabilitar el botón de co
 playerButton.addEventListener("click", function () { // Añadir evento click al botón de jugar
     if (playerName.value.length <= 3 || !isNaN(playerName.value[0])) { // Validar que el nombre del jugador tenga más de 3 caracteres y el primer carácter no sea un número
         playerName.className = "fondoRojo"; // Cambiar el color de fondo a rojo
+        match.classList.remove("fondoRojo"); // Eliminar la clase de fondo rojo
     } else if (match.value == 0) { // Validar que el número de partidas sea mayor a 0
         match.className = "fondoRojo"; // Cambiar el color de fondo a rojo
+        playerName.classList.remove("fondoRojo"); // Eliminar la clase de fondo rojo
     } else { // Si el nombre y el número de partidas son válidos
         playerName.classList.remove("fondoRojo"); // Eliminar la clase de fondo rojo
         playerName.setAttribute("readonly", "true"); // Hacer el input de nombre de jugador de solo lectura
         match.classList.remove("fondoRojo"); // Eliminar la clase de fondo rojo
         match.setAttribute("readonly", "true"); // Hacer el input de número de partidas de solo lectura
+        playerButton.setAttribute("disabled", "true"); // Deshabilitar el botón de jugar
 
         totalMatches.innerHTML = match.value; // Inicializar el número total de partidas
 
@@ -72,8 +75,13 @@ computerButton.addEventListener("click", function () { // Añadir evento click a
 
 // Añadir evento click al botón de reiniciar
 resetButton.addEventListener("click", function(){
-    alert("Nueva partida"); // Mostrar alerta de nueva partida
+    let historical = document.getElementById("historial"); // Obtener la lista de historial
+    let li = document.createElement("li"); // Crear un nuevo elemento de lista
+    li.innerHTML = "Nueva partida"; // Cambiar el texto del elemento de lista
+    historical.appendChild(li); // Añadir el elemento de lista al historial
+    // alert("Nueva partida"); // Mostrar alerta de nueva partida
     playerName.removeAttribute("readonly"); // Remover el atributo de solo lectura del input de nombre de jugador
+    playerButton.removeAttribute("disabled"); // Habilitar el botón de jugar
     match.removeAttribute("readonly"); // Remover el atributo de solo lectura del input de número de partidas
     match.value = 0; // Reiniciar el input número de partidas
     currentMatch.innerHTML = 0; // Reiniciar el número de partidas actuales
